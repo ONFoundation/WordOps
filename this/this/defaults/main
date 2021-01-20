@@ -1,0 +1,4 @@
+---
+node: metal0
+domain: timcast.com
+hostname: '{{node}}.{{domain}}'

@@ -1,0 +1,7 @@
+[node]
+192.168.122.189
+#localhost
+
+[node:vars]
+ansible_become_password=u
+ansible_user=me

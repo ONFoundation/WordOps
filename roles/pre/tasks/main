@@ -1,0 +1,17 @@
+---
+- name: Set a hostname
+  hostname:
+    name: '{{hostname}}'
+  become: true
+
+- name: Ports
+  ufw:
+    rule: allow
+    port: '{{ item }}'
+    proto: tcp
+  loop:
+    - 22
+    - 80
+    - 443
+    - 22222
+    - 1137
