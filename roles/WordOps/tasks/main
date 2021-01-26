@@ -1,4 +1,6 @@
 ---
+- include_tasks: all/pre
+
 - include_tasks: automated
   when: install == 'automated'
 
