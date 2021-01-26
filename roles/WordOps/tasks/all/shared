@@ -21,13 +21,9 @@
 - name: Install WordOps - from PyPi
   pip:
     name: wordops
+  become: true
 
 - name: copy configuration
-  copy:
-    src: '{{ item.src }}'
-    dest: '{{ item.dest }}'
-    remote_src: yes
-  loop:
-    - { src: '/usr/local/lib/python3.*/dist-packages/usr/*', dest: '/usr/' }
-    - { src: '/usr/local/lib/python3.*/dist-packages/etc/*', dest: '/etc/' }
-    - { src: '/usr/local/lib/python3.*/dist-packages/etc/bash_completion.d/wo_auto.rc', dest: '/etc/bash_completion.d/wo_auto.rc' }
+  script: copy_configuration.sh
+  become: true
+  # https://stackoverflow.com/questions/22476097/how-to-mention-wildcard-in-ansible-commands/53234673#53234673
