@@ -1,2 +1,5 @@
 ---
 # https://docs.wordops.net/getting-started/installation-guide/
+
+- debug:
+    msg: automated install

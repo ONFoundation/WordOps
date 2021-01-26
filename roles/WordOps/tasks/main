@@ -1,2 +1,6 @@
 ---
-- include_tasks: manual
+- include_tasks: '{{ ansible_os_family }}/{{ ansible_distribution }}/{{ ansible_distribution_major_version }}/manual'
+  when: install == 'manual'
+
+- include_tasks: automated
+  when: install == 'automated'
