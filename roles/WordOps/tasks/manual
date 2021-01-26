@@ -1,0 +1,32 @@
+---
+# https://docs.wordops.net/getting-started/installation-guide/#manual-installation
+
+- name: Install a list of packages
+  apt:
+    pkg:
+    - build-essential
+    - curl
+    - gzip
+    - python3-pip
+    - python3-wheel
+    - python3-apt
+    - python3-setuptools
+    - python3-dev
+    - sqlite3
+    - git
+    - tar
+    - software-properties-common
+    - pigz
+    - gnupg2
+    - cron
+    - ccze
+    - rsync
+    - apt-transport-https
+    - tree
+    - haveged
+    - ufw
+    - unattended-upgrades
+    - tzdata
+    - ntp
+    dpkg_options: 'force-confmiss,force-confold,assume-yes'
+  become: true

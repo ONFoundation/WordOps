@@ -1,4 +1,2 @@
 ---
-
-- debug:
-    msg: 'hello word'
+- include_tasks: manual
