@@ -1,6 +1,6 @@
 ---
 - name: Create two hard links
-  ansible.builtin.file:
+  file:
     path: '{{ item }}'
     state: directory
     mode: '0755'

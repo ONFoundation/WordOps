@@ -1,0 +1,22 @@
+---
+#https://docs.wordops.net/getting-started/installation-guide/#install-acmesh
+
+- name: heydebug:
+    msg: "Install acme.sh!"
+
+- name: clone the repository
+  git:
+    repo: 'https://github.com/Neilpang/acme.sh.git'
+    dest: /opt/acme.sh
+  become: true
+
+- name: create conf directory
+  file:
+    path: '{{ item }}'
+    state: directory
+    mode: '0755'
+  loop:
+    - /etc/letsencrypt/config
+    - /etc/letsencrypt/live
+    - /etc/letsencrypt/renewal
+  become: true
