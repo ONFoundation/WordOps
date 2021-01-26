@@ -1,12 +1,12 @@
 ---
-# - include_tasks: '{{ ansible_os_family }}/{{ ansible_distribution }}/{{ ansible_distribution_major_version }}/manual'
-#   when: install == 'manual'
-#
-# - include_tasks: all/shared
-#   when: install == 'manual'
-
-- include_tasks: all/acme
-  when: install == 'manual'
-
 - include_tasks: automated
   when: install == 'automated'
+
+- name: manual
+  block:
+  - include_tasks: '{{ ansible_os_family }}/{{ ansible_distribution }}/{{ ansible_distribution_major_version }}/manual'
+
+  - include_tasks: all/shared
+
+  - include_tasks: all/acme
+  when: install == 'manual'

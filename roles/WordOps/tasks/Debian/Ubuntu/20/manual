@@ -1,6 +1,8 @@
 ---
 # https://docs.wordops.net/getting-started/installation-guide/#manual-installation
 
+- include_tasks: all/network
+
 - name: Install a list of packages
   apt:
     pkg:

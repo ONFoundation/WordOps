@@ -1,9 +1,6 @@
 ---
 #https://docs.wordops.net/getting-started/installation-guide/#install-acmesh
 
-- name: heydebug:
-    msg: "Install acme.sh!"
-
 - name: clone the repository
   git:
     repo: 'https://github.com/Neilpang/acme.sh.git'
@@ -19,4 +16,32 @@
     - /etc/letsencrypt/config
     - /etc/letsencrypt/live
     - /etc/letsencrypt/renewal
+  become: true
+
+- name: install acme.sh
+  command: ./acme.sh --install --home /etc/letsencrypt --config-home /etc/letsencrypt/config --cert-home /etc/letsencrypt/renewal
+  args:
+    chdir: /opt/acme.sh/
+    creates: /etc/letsencrypt/acme.sh.env
+  become: true
+
+- name: enable auto-upgrade
+  command: /etc/letsencrypt/acme.sh --config-home '/etc/letsencrypt/config' --upgrade --auto-upgrade
+  become: true
+
+- name: create .well-known directory
+  file:
+    path: /var/www/html/.well-known/acme-challenge
+    state: directory
+  become: true
+
+- name: set www-data as owner
+  file:
+    path: '{{ item }}'
+    owner: www-data
+    group: www-data
+    mode: 750
+  loop:
+    - /var/www/html
+    - /var/www/html/.well-known
   become: true
