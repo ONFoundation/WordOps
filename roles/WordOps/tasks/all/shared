@@ -1,0 +1,33 @@
+---
+- name: Create two hard links
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    mode: '0755'
+  loop:
+    - /var/log/wo
+    - /var/lib/wo/tmp
+    - /var/lib/wo-backup
+  become: true
+
+- name: Update PIP
+  apt:
+    pkg:
+    - python3-pip
+    - python3-virtualenv
+    - python3-setuptools
+  become: true
+
+- name: Install WordOps - from PyPi
+  pip:
+    name: wordops
+
+- name: copy configuration
+  copy:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    remote_src: yes
+  loop:
+    - { src: '/usr/local/lib/python3.*/dist-packages/usr/*', dest: '/usr/' }
+    - { src: '/usr/local/lib/python3.*/dist-packages/etc/*', dest: '/etc/' }
+    - { src: '/usr/local/lib/python3.*/dist-packages/etc/bash_completion.d/wo_auto.rc', dest: '/etc/bash_completion.d/wo_auto.rc' }
