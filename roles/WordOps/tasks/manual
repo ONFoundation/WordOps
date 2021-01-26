@@ -28,5 +28,5 @@
     - unattended-upgrades
     - tzdata
     - ntp
-    dpkg_options: 'force-confmiss,force-confold,assume-yes'
+    dpkg_options: 'force-confmiss,force-confold'
   become: true
