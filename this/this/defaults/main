@@ -1,4 +1,4 @@
 ---
-node: metal0
-domain: timcast.com
+node: my
+domain: wordops.dev
 hostname: '{{node}}.{{domain}}'
