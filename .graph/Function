@@ -1,0 +1,3 @@
+changePassword(){
+wo site update --password
+}
