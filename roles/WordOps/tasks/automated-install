@@ -1,0 +1,6 @@
+---
+#https://docs.wordops.net/getting-started/installation-guide/#one-step-automated-install
+
+- name: One-Step Automated Install
+  command:
+    cmd: wget -qO wo wops.cc && sudo bash wo

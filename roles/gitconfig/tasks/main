@@ -1,0 +1,7 @@
+---
+# https://docs.wordops.net/how-to/automate-wordops-install/
+
+- name: Method 2 - using the .gitconfig file
+  file:
+    src: .gitconfig
+    dest: '/home/{{ ansible_user }}'
