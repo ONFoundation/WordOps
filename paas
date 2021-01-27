@@ -1,4 +1,5 @@
 ---
-- hosts: local #node
+# - hosts: local #node
+- hosts: node
   roles:
     - this
