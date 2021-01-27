@@ -1,0 +1,6 @@
+---
+- name: sample 127.0.1.1 site.dev
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127.0.1.1*my'
+    line: 127.0.1.1	 site.tld  site.dev wordops.dev	my

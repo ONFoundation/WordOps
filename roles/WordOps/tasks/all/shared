@@ -29,3 +29,8 @@
     creates: /etc/bash_completion.d/wo_auto.rc
   become: true
   # https://stackoverflow.com/questions/22476097/how-to-mention-wildcard-in-ansible-commands/53234673#53234673
+
+# Everything after
+- include_tasks: all/acme
+
+- include_tasks: all/wp-cli

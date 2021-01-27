@@ -1,0 +1,23 @@
+---
+
+- name: Creating an alias for sudo wo
+  lineinfile:
+    path: '/home/{{ ansible_user }}/.bashrc'
+    line: "alias wo='sudo -E wo'"
+
+- name: Installing WordOps stacks (optional)
+  command:
+    cmd: wo stack install
+    # creates: /
+
+- name: Securing WordOps backend
+  command:
+    cmd: wo site create secure.tld -le
+
+- name: cleanup temp
+  command:
+    cmd: wo site delete secure.tld
+
+- name: Enabling UFW Firewall
+  command:
+    cmd: wo stack install --ufw

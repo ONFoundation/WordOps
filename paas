@@ -1,5 +1,8 @@
 ---
-# - hosts: local #node
-- hosts: node
+- hosts: local #node
   roles:
-    - this
+    - WordOps
+
+- hosts: local
+  roles:
+    - hosts
